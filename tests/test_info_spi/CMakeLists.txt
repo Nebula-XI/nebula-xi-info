@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.19)
 
-project(nebula_xi_info_test_spi
-	DESCRIPTION "Nebula-XI Test SPI Info"
+project(nebula_xi_info_spi_test
+	DESCRIPTION "Nebula-XI Info SPI Test"
 )
 
 add_executable(${PROJECT_NAME} test_info_spi.cpp)

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.19)
 
-project(nebula_xi_info_test_gpio
-	DESCRIPTION "Nebula-XI Info Test GPIO"
+project(nebula_xi_info_gpio_test
+	DESCRIPTION "Nebula-XI Info GPIO Test"
 )
 
 add_executable(${PROJECT_NAME} test_info_gpio.cpp)
