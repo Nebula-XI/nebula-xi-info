@@ -26,7 +26,7 @@ SOFTWARE.
 
 #pragma once
 
-#include "info_sdram.h"
+#include "info_base.h"
 
 namespace nebulaxi {
 
