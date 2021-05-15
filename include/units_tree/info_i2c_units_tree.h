@@ -26,7 +26,7 @@ SOFTWARE.
 
 #pragma once
 
-#include "info_i2c.h"
+#include "info_base.h"
 
 namespace nebulaxi {
 
