@@ -26,7 +26,7 @@ SOFTWARE.
 
 #pragma once
 
-#include "info_gpio.h"
+#include "info_base.h"
 
 namespace nebulaxi {
 
