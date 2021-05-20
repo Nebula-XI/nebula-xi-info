@@ -1,6 +1,6 @@
 {
     "name": " Nebula-XI ",
-    "version": "0"
+    "version": "0",
     "units": [
         {
             "name": "bram",
