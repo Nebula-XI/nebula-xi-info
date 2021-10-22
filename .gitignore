@@ -42,3 +42,6 @@
 # Output directories
 *.build
 *build
+
+# CMake
+CMakeUserPresets.json
