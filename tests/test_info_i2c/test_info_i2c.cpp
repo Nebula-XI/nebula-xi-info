@@ -24,7 +24,64 @@ SOFTWARE.
 
 */
 
-int main(int argc, char* argv[])
+#ifdef __linux__
+#define CTEST_SEGFAULT
+#endif
+#define CTEST_MAIN
+#define CTEST_COLOR_OK
+#include <ctest.h>
+
+#include "info_i2c_parser.h"
+#include "print_info_i2c.h"
+
+using namespace nebulaxi;
+
+#ifndef CONFIG_FILE_PATH
+#define CONFIG_FILE_PATH "units_tree_config.json"
+#endif
+
+CTEST_DATA(nebula_xi_info)
 {
-    return 0;
+  info_i2c_parser *i2c_parser;
+};
+
+CTEST_SETUP(nebula_xi_info)
+{
+  std::ifstream units_config_file(CONFIG_FILE_PATH);
+  std::stringstream units_config{};
+  units_config << units_config_file.rdbuf();
+  static info_i2c_parser i2c_parser{units_config.str()};
+  data->i2c_parser = &i2c_parser;
+};
+
+CTEST2(nebula_xi_info, i2c_axi)
+{
+  auto i2c_parser = *static_cast<info_i2c_parser *>(data->i2c_parser);
+  for (const auto &info : i2c_parser.get_info<info_i2c_parser::axi_parser>())
+  {
+    print_info(info);
+  }
+}
+
+CTEST2(nebula_xi_info, i2c_mux)
+{
+  auto i2c_parser = *static_cast<info_i2c_parser *>(data->i2c_parser);
+  for (const auto &info : i2c_parser.get_info<info_i2c_parser::mux_parser>())
+  {
+    print_info(info);
+  }
+}
+
+CTEST2(nebula_xi_info, i2c_dev)
+{
+  auto i2c_parser = *static_cast<info_i2c_parser *>(data->i2c_parser);
+  for (const auto &info : i2c_parser.get_info<info_i2c_parser::dev_parser>())
+  {
+    print_info(info);
+  }
+}
+
+int main(int argc, const char **argv)
+{
+  return ctest_main(argc, argv);
 }

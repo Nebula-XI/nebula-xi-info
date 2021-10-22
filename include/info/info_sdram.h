@@ -28,32 +28,21 @@ SOFTWARE.
 
 #include "info_base.h"
 
-namespace nebulaxi {
-
-class info_axi_sdram final : public info_axi_base {
-    inline static constexpr auto k_unit { "axi-sdram" };
-
-public:
-    using list_type = info_list<info_axi_sdram>;
-    info_axi_sdram()
-        : info_axi_base { k_unit }
+namespace nebulaxi
+{
+    class info_axi_sdram final : public info_axi_base
     {
-    }
-    info_axi_sdram(const std::string_view& name, const std::string_view& label, uint64_t axi_offset)
-        : info_axi_base { name, label, axi_offset, k_unit }
+    public:
+        using list_type = info_list<info_axi_sdram>;
+        info_axi_sdram() = default;
+        info_axi_sdram(const std::string_view &name, const std::string_view &driver, uint64_t axi_offset)
+            : info_axi_base{name, driver, axi_offset} {}
+    };
+    class info_sdram_dev_base : public info_base
     {
-    }
-};
-
-class info_sdram_dev_base : public info_base {
-    info_sdram_dev_base(const std::string_view& unit)
-        : info_base { unit }
-    {
-    }
-    info_sdram_dev_base(const std::string_view& name, const std::string_view& label, info_uid parent_uid, const std::string_view& unit)
-        : info_base { name, label, parent_uid, unit }
-    {
-    }
-};
+        info_sdram_dev_base() = default;
+        info_sdram_dev_base(const std::string_view &name, const std::string_view &driver, info_uid parent_uid)
+            : info_base{name, driver, parent_uid} {}
+    };
 
 }

@@ -28,14 +28,16 @@ SOFTWARE.
 
 #include "info_base.h"
 
-namespace nebulaxi {
+namespace nebulaxi
+{
 
-class info_sdram_units_tree : public info_units_tree {
-    static constexpr auto k_sdram { "sdram" };
+    class info_sdram_units_tree : public info_units_tree
+    {
+        static constexpr auto k_sdram{"sdram"};
 
-public:
-    using info_units_tree::info_units_tree;
-    constexpr auto unit_name() const { return k_sdram; }
-};
+    public:
+        using info_units_tree::info_units_tree;
+        constexpr auto unit_name() const { return k_sdram; }
+    };
 
 }

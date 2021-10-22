@@ -28,23 +28,28 @@ SOFTWARE.
 
 #include "info_base.h"
 
-namespace nebulaxi {
+namespace nebulaxi
+{
+    class info_i2c_units_tree : public info_units_tree
+    {
+        static constexpr auto k_i2c{"I2C"};
+        static constexpr auto k_channels_num{"channels"};
+        static constexpr auto k_channel{"channel"};
+        static constexpr auto k_channel_name{"name"};
+        static constexpr auto k_address{"addr"};
+        static constexpr auto k_frequency{"freq"};
 
-class info_i2c_units_tree : public info_units_tree {
-    static constexpr auto k_i2c { "i2c" };
-    static constexpr auto k_segments_num { "segsnum" };
-    static constexpr auto k_segment { "seg" };
-    static constexpr auto k_address { "addr" };
-    static constexpr auto k_frequency { "freq" };
-
-public:
-    using info_units_tree::info_units_tree;
-    constexpr auto unit_name() const { return k_i2c; }
-    auto get_segments_num_optional() const { return m_units_tree.get_optional<uint32_t>(k_segments_num); }
-    auto get_segments_num() const { return m_units_tree.get<uint32_t>(k_segments_num); }
-    auto get_segment() const { return m_units_tree.get<uint32_t>(k_segment); }
-    auto get_address() const { return std::strtol(m_units_tree.get<std::string>(k_address).c_str(), nullptr, 16); }
-    auto get_frequency() const { return m_units_tree.get<double>(k_frequency); }
-};
+    public:
+        using info_units_tree::info_units_tree;
+        constexpr auto unit_name() const { return k_i2c; }
+        auto get_channels_num_optional() const { return m_units_tree.get_optional<uint32_t>(k_channels_num); }
+        auto get_channels_num() const { return m_units_tree.get<uint32_t>(k_channels_num); }
+        auto get_channel_optional() const { return m_units_tree.get_optional<uint32_t>(k_channel); }
+        auto get_channel() const { return m_units_tree.get<uint32_t>(k_channel); }
+        auto get_channel_name_optional() const { return m_units_tree.get_optional<std::string>(k_channel_name); }
+        auto get_channel_name() const { return m_units_tree.get<std::string>(k_channel_name); }
+        auto get_address() const { return std::strtol(m_units_tree.get<std::string>(k_address).c_str(), nullptr, 16); }
+        auto get_frequency() const { return m_units_tree.get<double>(k_frequency); }
+    };
 
 }

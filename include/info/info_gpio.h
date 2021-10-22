@@ -28,19 +28,15 @@ SOFTWARE.
 
 #include "info_base.h"
 
-namespace nebulaxi {
-
-class info_axi_gpio final : public info_axi_base {
-public:
-    using list_type = info_list<info_axi_gpio>;
-    info_axi_gpio()
-        : info_axi_base { "axi-gpio" }
+namespace nebulaxi
+{
+    class info_axi_gpio final : public info_axi_base
     {
-    }
-    info_axi_gpio(const std::string_view& name, const std::string_view& label, uint64_t axi_offset)
-        : info_axi_base { name, label, axi_offset, "axi-gpio" }
-    {
-    }
-};
+    public:
+        using list_type = info_list<info_axi_gpio>;
+        info_axi_gpio() = default;
+        info_axi_gpio(const std::string_view &name, const std::string_view &driver, uint64_t axi_offset)
+            : info_axi_base{name, driver, axi_offset} {}
+    };
 
 }

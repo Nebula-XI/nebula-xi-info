@@ -29,74 +29,59 @@ SOFTWARE.
 #include "info_spi.h"
 #include "info_spi_units_tree.h"
 
-namespace nebulaxi {
+namespace nebulaxi
+{
 
-class info_axi_spi_parser : public info_base_parser<info_list, info_axi_spi> {
-protected:
-    void parser(const info_units_tree& units_tree) override
+    class info_axi_spi_parser : public info_base_parser<info_list, info_axi_spi>
     {
-        // TODO: add configuration parser
-    }
-    void parser(const std::string_view& config) override
-    {
-        parser(info_spi_units_tree { config }.get_units());
-    }
+    protected:
+        void parser(const info_units_tree &units_tree) override
+        {
+            // TODO: add configuration parser
+        }
+        void parser(const std::string_view &config) override { parser(info_spi_units_tree{config}.get_units()); }
 
-public:
-    info_axi_spi_parser() = default;
-    info_axi_spi_parser(const std::string_view& config) { parser(config); }
-};
+    public:
+        info_axi_spi_parser() = default;
+        info_axi_spi_parser(const std::string_view &config) { parser(config); }
+    };
 
-class info_spi_dev_parser : public info_base_parser<info_list, info_spi_dev> {
-protected:
-    void parser(const info_units_tree& units_tree) override
+    class info_spi_dev_parser : public info_base_parser<info_list, info_spi_dev>
     {
-        // TODO: add configuration parser
-    }
-    void parser(const std::string_view& config) override
-    {
-        parser(info_units_tree { config }.get_units());
-    }
+    protected:
+        void parser(const info_units_tree &units_tree) override
+        {
+            // TODO: add configuration parser
+        }
+        void parser(const std::string_view &config) override { parser(info_units_tree{config}.get_units()); }
 
-public:
-    info_spi_dev_parser() = default;
-    info_spi_dev_parser(const std::string_view& config) { parser(config); }
-};
+    public:
+        info_spi_dev_parser() = default;
+        info_spi_dev_parser(const std::string_view &config) { parser(config); }
+    };
 
-class info_spi_parser final : public info_axi_spi_parser, public info_spi_dev_parser {
-public:
-    using axi_parser = info_axi_spi_parser;
-    using dev_parser = info_spi_dev_parser;
-    info_spi_parser(const std::string_view& config) { parser(config); }
-    template <typename parser>
-    typename parser::list_type get_info() const
+    class info_spi_parser final : public info_axi_spi_parser, public info_spi_dev_parser
     {
-        return parser::get_info();
-    }
-    template <typename parser>
-    typename parser::list_type find_by_name(const std::string_view& name) const
-    {
-        return parser::find_by_name(name);
-    }
-    template <typename parser>
-    std::optional<typename parser::value_type> get_by_label(const std::string_view& label) const
-    {
-        return parser::get_by_label(label);
-    }
-    template <typename parser>
-    std::optional<typename parser::value_type> get_by_uid(info_uid uid) const
-    {
-        return parser::get_by_uid(uid);
-    }
+    public:
+        using axi_parser = info_axi_spi_parser;
+        using dev_parser = info_spi_dev_parser;
+        info_spi_parser(const std::string_view &config) { parser(config); }
+        template <typename parser>
+        typename parser::list_type get_info() const { return parser::get_info(); }
+        template <typename parser>
+        typename parser::list_type find_by_name(const std::string_view &name) const { return parser::find_by_name(name); }
+        template <typename parser>
+        std::optional<typename parser::value_type> get_by_label(const std::string_view &label) const { return parser::get_by_label(label); }
+        template <typename parser>
+        std::optional<typename parser::value_type> get_by_uid(info_uid uid) const { return parser::get_by_uid(uid); }
 
-private:
-    void parser(const std::string_view& config) final
-    {
-        auto units_tree = info_spi_units_tree { config }.get_units();
-        axi_parser::parser(units_tree);
-        dev_parser::parser(units_tree);
-        // TODO: add configuration parser
-    }
-};
-
+    private:
+        void parser(const std::string_view &config) final
+        {
+            auto units_tree = info_spi_units_tree{config}.get_units();
+            axi_parser::parser(units_tree);
+            dev_parser::parser(units_tree);
+            // TODO: add configuration parser
+        }
+    };
 }

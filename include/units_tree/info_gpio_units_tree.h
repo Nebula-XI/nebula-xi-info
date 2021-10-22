@@ -28,14 +28,16 @@ SOFTWARE.
 
 #include "info_base.h"
 
-namespace nebulaxi {
+namespace nebulaxi
+{
 
-class info_gpio_units_tree : public info_units_tree {
-    static constexpr auto k_gpio { "gpio" };
+    class info_gpio_units_tree : public info_units_tree
+    {
+        static constexpr auto k_gpio{"gpio"};
 
-public:
-    using info_units_tree::info_units_tree;
-    constexpr auto unit_name() const { return k_gpio; }
-};
+    public:
+        using info_units_tree::info_units_tree;
+        constexpr auto unit_name() const { return k_gpio; }
+    };
 
 }

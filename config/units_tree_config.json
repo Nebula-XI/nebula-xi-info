@@ -1,0 +1,97 @@
+{
+    "id": "Nebula-XI",
+    "name": "FMC126P",
+    "version": "3.1",
+    "units": [
+        {
+            "name": "RX DMA Switch",
+            "driver": "AXI4-Stream Switch",
+            "offset": "0x00010000"
+        },
+        {
+            "name": "ATG",
+            "driver": "AXI Traffic Generator",
+            "offset": "0x00030000"
+        },
+        {
+            "name": "I2C",
+            "driver": "AXI IIC",
+            "offset": "0x00020000",
+            "units": [
+                {
+                    "name": "TCA9548A",
+                    "driver": "TCA9548A",
+                    "label": "D23",
+                    "addr": "0x70",
+                    "freq": "400000",
+                    "channels": "8",
+                    "units": [
+                        {
+                            "name": "POWER",
+                            "channel": "1",
+                            "units": [
+                                {
+                                    "name": "INA219",
+                                    "driver": "INA219",
+                                    "label": "D33",
+                                    "addr": "0x40",
+                                    "freq": "400000",
+                                    "additional": {
+                                    }
+                                },
+                                {
+                                    "name": "LTC2991",
+                                    "driver": "LTC2991",
+                                    "label": "D31",
+                                    "addr": "0x90",
+                                    "freq": "400000",
+                                    "additional": {
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "EXAR",
+                            "channel": "5",
+                            "units": [
+                                {
+                                    "name": "XR77128",
+                                    "driver": "XR77128",
+                                    "label": "D32",
+                                    "addr": "0x28",
+                                    "freq": "400000"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "DDR4",
+                            "channel": "6",
+                            "units": [
+                                {
+                                    "name": "DDR4 SODIMM",
+                                    "driver": "DDR4 SODIMM",
+                                    "label": "XS1.1",
+                                    "addr": "0x50",
+                                    "freq": "400000"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "SWITCH CLOCK",
+                            "channel": "7",
+                            "units": [
+                                {
+                                    "name": "ADN4600",
+                                    "driver": "ADN4600",
+                                    "label": "D13",
+                                    "addr": "0x48",
+                                    "freq": "400000"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
