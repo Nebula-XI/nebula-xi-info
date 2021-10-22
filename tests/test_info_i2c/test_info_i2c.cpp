@@ -34,15 +34,15 @@ SOFTWARE.
 #include "info_i2c_parser.h"
 #include "print_info_i2c.h"
 
-using namespace nebulaxi;
-
 #ifndef CONFIG_FILE_PATH
 #define CONFIG_FILE_PATH "units_tree_config.json"
 #endif
 
+using namespace nebulaxi;
+
 CTEST_DATA(nebula_xi_info)
 {
-  info_i2c_parser *i2c_parser;
+  info_i2c_parser *i2c_parser{};
 };
 
 CTEST_SETUP(nebula_xi_info)
@@ -50,9 +50,17 @@ CTEST_SETUP(nebula_xi_info)
   std::ifstream units_config_file(CONFIG_FILE_PATH);
   std::stringstream units_config{};
   units_config << units_config_file.rdbuf();
-  static info_i2c_parser i2c_parser{units_config.str()};
-  data->i2c_parser = &i2c_parser;
+  data->i2c_parser = new info_i2c_parser{units_config.str()};
 };
+
+CTEST_TEARDOWN(nebula_xi_info)
+{
+  if (data->i2c_parser)
+  {
+    delete data->i2c_parser;
+    data->i2c_parser = nullptr;
+  }
+}
 
 CTEST2(nebula_xi_info, i2c_axi)
 {
