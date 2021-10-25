@@ -2,6 +2,8 @@
 
 Units Tree Configuration (UTC) and Units Information Structures (UIS) for AXI Library
 
+[![CMake](https://github.com/Nebula-XI/nebula-xi-info/actions/workflows/cmake.yml/badge.svg)](https://github.com/Nebula-XI/nebula-xi-info/actions/workflows/cmake.yml)
+
 ### Required
 
 CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3 (Linux Native Build) or MinGW Cross-Compiler 10.3 (Build for Windows on Linux)
@@ -69,3 +71,5 @@ CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3 (Linux Native Build) or MinGW Cro
 #### Linux
 
 `./make sh config build test`
+
+
