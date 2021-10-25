@@ -8,7 +8,7 @@ on:
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  PRESETS: linux-x64-release linux-x64-debug
+  PRESETS: linux-x64-release
 
 jobs:
   build:
