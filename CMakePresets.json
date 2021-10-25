@@ -75,77 +75,77 @@
     },
     {
       "name": "linux-x64-release",
-      "displayName": "[x64-gnu] Build Linux (Release)",
       "inherits": "base-build",
+      "displayName": "[x64-gnu] Build Linux (Release)",
       "configurePreset": "linux-x64-release"
     },
     {
       "name": "linux-x64-release-rebuild",
-      "displayName": "[x64-gnu] Re-Build Linux (Release)",
       "inherits": "linux-x64-release",
+      "displayName": "[x64-gnu] Rebuild Linux (Release)",
       "cleanFirst": true
     },
     {
       "name": "linux-x64-release-verbose",
-      "displayName": "[x64-gnu] Verbose Re-Build Linux (Release)",
       "inherits": "linux-x64-release",
+      "displayName": "[x64-gnu] Verbose Rebuild Linux (Release)",
       "cleanFirst": true,
       "verbose": true
     },
     {
       "name": "linux-x64-debug",
-      "displayName": "[x64-gnu] Build Linux (Debug)",
       "inherits": "base-build",
+      "displayName": "[x64-gnu] Build Linux (Debug)",
       "configurePreset": "linux-x64-debug"
     },
     {
       "name": "linux-x64-debug-rebuild",
-      "displayName": "[x64-gnu] Re-Build Linux (Debug)",
       "inherits": "linux-x64-debug",
+      "displayName": "[x64-gnu] Rebuild Linux (Debug)",
       "cleanFirst": true
     },
     {
       "name": "linux-x64-debug-verbose",
-      "displayName": "[x64-gnu] Verbose Re-Build Linux (Debug)",
       "inherits": "linux-x64-debug",
+      "displayName": "[x64-gnu] Verbose Rebuild Linux (Debug)",
       "cleanFirst": true,
       "verbose": true
     },
     {
       "name": "windows-x64-release",
-      "displayName": "[x64-mingw-cross] Build Windows on Linux (Release)",
       "inherits": "base-build",
+      "displayName": "[x64-mingw-cross] Build Windows on Linux (Release)",
       "configurePreset": "windows-x64-release"
     },
     {
       "name": "windows-x64-release-rebuild",
-      "displayName": "[x64-mingw-cross] Re-Build Windows on Linux (Release)",
       "inherits": "windows-x64-release",
+      "displayName": "[x64-mingw-cross] Rebuild Windows on Linux (Release)",
       "cleanFirst": true
     },
     {
       "name": "windows-x64-release-verbose",
-      "displayName": "[x64-mingw-cross] Verbose Re-Build Windows on Linux (Release)",
       "inherits": "windows-x64-release",
+      "displayName": "[x64-mingw-cross] Verbose Rebuild Windows on Linux (Release)",
       "cleanFirst": true,
       "verbose": true
     },
     {
       "name": "windows-x64-debug",
-      "displayName": "[x64-mingw-cross] Build Windows on Linux (Debug)",
       "inherits": "base-build",
+      "displayName": "[x64-mingw-cross] Build Windows on Linux (Debug)",
       "configurePreset": "windows-x64-debug"
     },
     {
       "name": "windows-x64-debug-rebuild",
-      "displayName": "[x64-mingw-cross] Re-Build Windows on Linux (Debug)",
       "inherits": "windows-x64-debug",
+      "displayName": "[x64-mingw-cross] Rebuild Windows on Linux (Debug)",
       "cleanFirst": true
     },
     {
       "name": "windows-x64-debug-verbose",
-      "displayName": "[x64-mingw-cross] Verbnose Re-Build Windows on Linux (Debug)",
       "inherits": "windows-x64-debug",
+      "displayName": "[x64-mingw-cross] Verbnose Rebuild Windows on Linux (Debug)",
       "cleanFirst": true,
       "verbose": true
     }
@@ -160,16 +160,6 @@
       "name": "linux-x64-debug",
       "displayName": "[x64-gnu] Test Linux (Debug)",
       "configurePreset": "linux-x64-debug"
-    },
-    {
-      "name": "windows-x64-release",
-      "displayName": "[x64-mingw-cross] Test Windows on Linux (Release)",
-      "configurePreset": "windows-x64-release"
-    },
-    {
-      "name": "windows-x64-debug",
-      "displayName": "[x64-mingw-cross] Test Windows on Linux (Debug)",
-      "configurePreset": "windows-x64-debug"
     }
   ]
 }

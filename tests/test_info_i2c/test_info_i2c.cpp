@@ -68,6 +68,7 @@ CTEST2(nebula_xi_info, i2c_axi)
   for (const auto &info : i2c_parser.get_info<info_i2c_parser::axi_parser>())
   {
     print_info(info);
+    // TODO: add test
   }
 }
 
@@ -77,6 +78,7 @@ CTEST2(nebula_xi_info, i2c_mux)
   for (const auto &info : i2c_parser.get_info<info_i2c_parser::mux_parser>())
   {
     print_info(info);
+    // TODO: add test
   }
 }
 
@@ -86,6 +88,7 @@ CTEST2(nebula_xi_info, i2c_dev)
   for (const auto &info : i2c_parser.get_info<info_i2c_parser::dev_parser>())
   {
     print_info(info);
+    // TODO: add test
   }
 }
 
