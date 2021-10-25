@@ -1,7 +1,9 @@
 #!/bin/bash
 
 function usage(){
-    echo "Usage:"
+    echo -e "Usage\n"
+    echo "./make.sh [options]"
+    echo -e "\nOptions"
     echo -e '\t' "config - Configure presets."
     echo -e '\t' "build - Build presets."
     echo -e '\t' "rebuild - Rebuild presets."
