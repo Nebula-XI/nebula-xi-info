@@ -19,9 +19,9 @@ target_compile_options(${PROJECT_NAME} PUBLIC ${PROJECT_COMPILE_OPTIONS})
 target_link_libraries(${PROJECT_NAME} ${PROJECT_LINK_LIBRARIES})
 
 if(UNIX)
-    target_link_options(${PROJECT_NAME} PUBLIC "$<$<CONFIG:Release>:-s>") 
-    set(CMAKE_SKIP_RPATH on) 
+    target_link_options(${PROJECT_NAME} PUBLIC "$<$<CONFIG:Release>:-s>")
+    set(CMAKE_SKIP_RPATH on)
     target_link_options(${PROJECT_NAME} PUBLIC "-Wl,-rpath=.")
 endif()
 
-add_test("test_info_i2c" ${PROJECT_NAME})
+add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME} )
