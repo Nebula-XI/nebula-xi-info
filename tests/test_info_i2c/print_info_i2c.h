@@ -22,6 +22,7 @@ void print_info(const nebulaxi::info_axi_base& info)
 void print_info(const nebulaxi::info_i2c_mux& info)
 {
     print_info(static_cast<nebulaxi::info_i2c_dev_base>(info));
+    std::cout << "label: " << info.label() << '\n';
     std::map<uint32_t, nebulaxi::info_uid> chahnels_map {};
     for (const auto& [uid, channel] : info.channels()) {
         chahnels_map.emplace(channel, uid);
@@ -34,6 +35,7 @@ void print_info(const nebulaxi::info_i2c_mux& info)
 void print_info(const nebulaxi::info_i2c_dev& info)
 {
     print_info(static_cast<nebulaxi::info_base>(info));
+    std::cout << "label: " << info.label() << '\n';
     if (info.channel_name().has_value()) {
         std::cout << "channel name: " << info.channel_name().value() << '\n';
     }

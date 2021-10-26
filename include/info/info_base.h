@@ -143,15 +143,15 @@ public:
         }
         return ret_info_list;
     }
-    std::optional<value_type> get_by_driver(const std::string_view& driver) const
+    list_type find_by_driver(const std::string_view& driver) const
     {
-        std::optional<value_type> result {};
+        list_type ret_info_list {};
         for (const auto& info : m_info_list) {
             if (info.driver() == driver) {
-                result.emplace(info);
+                ret_info_list.push_back(info);
             }
         }
-        return result;
+        return ret_info_list;
     }
     std::optional<value_type> get_by_label(const std::string_view& label) const
     {

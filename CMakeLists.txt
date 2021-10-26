@@ -12,21 +12,26 @@ set(PROJECT_COMPILE_DEFINES)
 set(PROJECT_LINK_LIBRARIES)
 
 set(PROJECT_INCLUDE_DIRS
-	${PROJECT_SOURCE_DIR}/include/info
-	${PROJECT_SOURCE_DIR}/include/parser
-	${PROJECT_SOURCE_DIR}/include/units_tree
+    ${PROJECT_SOURCE_DIR}/include/info
+    ${PROJECT_SOURCE_DIR}/include/parser
+    ${PROJECT_SOURCE_DIR}/include/units_tree
 )
 set(PROJECT_INCLUDES )
 
 add_library(${PROJECT_NAME} INTERFACE)
 
+set(PROJECT_COMPILE_DEFINES ${PROJECT_COMPILE_DEFINES}
+    NEBULAXI_CONFIG_FILE_PATH="${CMAKE_CURRENT_SOURCE_DIR}/config/units_tree_config.json" CACHE STRING ""
+)
+
+if(NEBULAXI_INFO_TEST_VERBOSE)
+    set(PROJECT_COMPILE_DEFINES ${PROJECT_COMPILE_DEFINES} NEBULAXI_INFO_TEST_VERBOSE)
+endif()
+
 target_include_directories(${PROJECT_NAME} INTERFACE ${PROJECT_INCLUDE_DIRS})
 target_compile_definitions(${PROJECT_NAME} INTERFACE ${PROJECT_COMPILE_DEFINES})
 
-set(PROJECT_COMPILE_DEFINES ${PROJECT_COMPILE_DEFINES}
-	CONFIG_FILE_PATH="${CMAKE_CURRENT_SOURCE_DIR}/config/units_tree_config.json" CACHE STRING "")
-
-if(TEST_ENABLE)
-	enable_testing()
-	add_subdirectory(tests)
+if(NEBULAXI_INFO_BUILD_TEST)
+    enable_testing()
+    add_subdirectory(tests)
 endif()

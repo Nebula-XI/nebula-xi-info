@@ -12,7 +12,9 @@
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/${presetName}",
       "cacheVariables": {
-        "TEST_ENABLE": true
+        "NEBULAXI_INFO_BUILD_TEST": true,
+        "NEBULAXI_DEV_BUILD_TEST": true,
+        "NEBULAXI_INFO_TEST_VERBOSE": true
       }
     },
     {

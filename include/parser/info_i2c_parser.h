@@ -149,9 +149,9 @@ public:
     template <typename parser>
     typename parser::list_type find_by_name(const std::string_view& name) const { return parser::find_by_name(name); }
     template <typename parser>
-    std::optional<typename parser::value_type> get_by_label(const std::string_view& label) const { return parser::get_by_label(label); }
+    typename parser::list_type find_by_driver(const std::string_view& driver) const { return parser::find_by_driver(driver); }
     template <typename parser>
-    std::optional<typename parser::value_type> get_by_driver(const std::string_view& driver) const { return parser::get_by_driver(driver); }
+    std::optional<typename parser::value_type> get_by_label(const std::string_view& label) const { return parser::get_by_label(label); }
     template <typename parser>
     std::optional<typename parser::value_type> get_by_uid(info_uid uid) const { return parser::get_by_uid(uid); }
 
