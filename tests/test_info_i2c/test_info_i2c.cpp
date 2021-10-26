@@ -71,7 +71,7 @@ CTEST_TEARDOWN(nebulaxi_info)
 CTEST2(nebulaxi_info, get_info)
 {
     if (g_verbose) {
-        std::cout << "\nConfig file: " << NEBULAXI_CONFIG_FILE_PATH << '\n';
+        std::cout << "\nConfiguration file: " << NEBULAXI_CONFIG_FILE_PATH << '\n';
     }
     auto i2c_parser = *static_cast<info_i2c_parser*>(data->i2c_parser);
     for (const auto& info : i2c_parser.get_info<info_i2c_parser::axi_parser>()) {
