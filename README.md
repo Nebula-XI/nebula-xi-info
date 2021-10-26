@@ -75,7 +75,7 @@ CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3 (Linux Native Build) or MinGW Cro
 
 ### Linux
 
-`./make sh config build test`
+`./make.sh config build test`
 
 ## JSON Configuration File
 
