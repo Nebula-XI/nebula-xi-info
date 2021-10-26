@@ -2,7 +2,7 @@
 
 Units Tree Configuration (UTC) and Units Information Structures (UIS) for AXI Library
 
-[![](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/mit-license.php) 
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/mit-license.php)
 [![CMake](https://github.com/Nebula-XI/nebula-xi-info/actions/workflows/cmake.yml/badge.svg)](https://github.com/Nebula-XI/nebula-xi-info/actions/workflows/cmake.yml)
 
 ## Requirements
@@ -27,6 +27,7 @@ CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3 (Linux Native Build) or MinGW Cro
 
 ### Linux Native x86_64
 
+
 `cmake --build --preset linux-x64-release`
 
 `cmake --build --preset linux-x64-release-rebuild`
@@ -40,6 +41,7 @@ CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3 (Linux Native Build) or MinGW Cro
 `cmake --build --preset linux-x64-debug-verbose`
 
 ### Windows on Linux x86_64
+
 
 `cmake --build --preset windows-x64-release`
 
@@ -57,11 +59,13 @@ CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3 (Linux Native Build) or MinGW Cro
 
 ### Linux Native x86_64
 
+
 `ctest --preset linux-x64-release`
 
 `ctest --preset linux-x64-debug`
 
 ### Windows on Linux x86_64
+
 
 `ctest --preset windows-x64-release`
 
@@ -183,6 +187,7 @@ CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3 (Linux Native Build) or MinGW Cro
 ## Parsing Example
 
 ### Parsing I2C Configuration
+
 ```c
     std::ifstream units_config_file(NEBULAXI_CONFIG_FILE_PATH);
     std::stringstream units_config {};
@@ -195,6 +200,7 @@ CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3 (Linux Native Build) or MinGW Cro
 ```
 
 ### Result of Parsing I2C Configuration
+
 ```bash
 Configuration file: ./config/units_tree_config.json
 
