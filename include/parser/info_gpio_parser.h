@@ -29,37 +29,38 @@ SOFTWARE.
 #include "info_gpio.h"
 #include "info_gpio_units_tree.h"
 
-namespace nebulaxi
-{
-    class info_axi_gpio_parser : public info_base_parser<info_list, info_axi_gpio>
+namespace nebulaxi {
+class info_axi_gpio_parser : public info_base_parser<info_list, info_axi_gpio> {
+protected:
+    void parser(const info_units_tree& units_tree) override
     {
-    protected:
-        void parser(const info_units_tree &units_tree) override
-        {
-            // TODO: add configuration parser
-        }
-        void parser(const std::string_view &config) override { parser(info_gpio_units_tree{config}.get_units()); }
+        // TODO: add configuration parser
+    }
+    void parser(const std::string_view& config) override { parser(info_gpio_units_tree { config }.get_units()); }
 
-    public:
-        info_axi_gpio_parser() = default;
-        info_axi_gpio_parser(const std::string_view &config) { parser(config); }
-    };
-    class info_gpio_parser final : public info_axi_gpio_parser
+public:
+    info_axi_gpio_parser() = default;
+    info_axi_gpio_parser(const std::string_view& config) { parser(config); }
+};
+class info_gpio_parser final : public info_axi_gpio_parser {
+public:
+    using axi_parser = info_axi_gpio_parser;
+    info_gpio_parser(const std::string_view& config) { parser(config); }
+    template <typename parser>
+    typename parser::list_type get_info() const { return parser::get_info(); }
+    template <typename parser>
+    typename parser::list_type find_by_name(const std::string_view& name) const { return parser::find_by_name(name); }
+    template <typename parser>
+    std::optional<typename parser::value_type> get_by_label(const std::string_view& label) const { return parser::get_by_label(label); }
+    template <typename parser>
+    std::optional<typename parser::value_type> get_by_uid(info_uid uid) const { return parser::get_by_uid(uid); }
+
+private:
+    void parser(const std::string_view& config) final
     {
-    public:
-        using axi_parser = info_axi_gpio_parser;
-        info_gpio_parser(const std::string_view &config) { parser(config); }
-        template <typename parser>
-        typename parser::list_type get_info() const { return parser::get_info(); }
-        template <typename parser>
-        typename parser::list_type find_by_name(const std::string_view &name) const { return parser::find_by_name(name); }
-        template <typename parser>
-        std::optional<typename parser::value_type> get_by_label(const std::string_view &label) const { return parser::get_by_label(label); }
-        template <typename parser>
-        std::optional<typename parser::value_type> get_by_uid(info_uid uid) const { return parser::get_by_uid(uid); }
-
-    private:
-        void parser(const std::string_view &config) final
-        {
-            auto units_tree = info_gpio_units_tree{config}.get_units();
-            axi_parser::parser(units_tree); // TODO: add configuration parser    }            };        }
+        auto units_tree = info_gpio_units_tree { config }.get_units();
+        axi_parser::parser(units_tree);
+        // TODO: add configuration parser
+    }
+};
+}

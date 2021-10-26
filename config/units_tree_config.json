@@ -27,6 +27,10 @@
                     "channels": "8",
                     "units": [
                         {
+                            "name": "FMC",
+                            "channel": "0"
+                        },
+                        {
                             "name": "POWER",
                             "channel": "1",
                             "units": [
@@ -36,8 +40,7 @@
                                     "label": "D33",
                                     "addr": "0x40",
                                     "freq": "400000",
-                                    "additional": {
-                                    }
+                                    "additional": {}
                                 },
                                 {
                                     "name": "LTC2991",
@@ -45,8 +48,7 @@
                                     "label": "D31",
                                     "addr": "0x90",
                                     "freq": "400000",
-                                    "additional": {
-                                    }
+                                    "additional": {}
                                 }
                             ]
                         },

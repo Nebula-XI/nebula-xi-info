@@ -28,35 +28,39 @@ SOFTWARE.
 
 #include "info_base.h"
 
-namespace nebulaxi
-{
-    class info_axi_spi final : public info_axi_base
+namespace nebulaxi {
+class info_axi_spi final : public info_axi_base {
+public:
+    using list_type = info_list<info_axi_spi>;
+    info_axi_spi() = default;
+    info_axi_spi(const std::string_view& name, const std::string_view& label, uint64_t axi_offset)
+        : info_axi_base { name, label, axi_offset }
     {
-    public:
-        using list_type = info_list<info_axi_spi>;
-        info_axi_spi() = default;
-        info_axi_spi(const std::string_view &name, const std::string_view &label, uint64_t axi_offset)
-            : info_axi_base{name, label, axi_offset} {}
-    };
-    class info_spi_dev_base : public info_base
-    {
-        uint32_t m_chip_select{};
-        double m_frequency{};
+    }
+};
+class info_spi_dev_base : public info_base {
+    uint32_t m_chip_select {};
+    double m_frequency {};
 
-    public:
-        info_spi_dev_base() = default;
-        info_spi_dev_base(const std::string_view &name, const std::string_view &label, uint32_t chip_select, double frequency, info_uid parent_uid)
-            : info_base{name, label, parent_uid}, m_chip_select{chip_select}, m_frequency{frequency} {}
-        auto chip_select() const noexcept { return m_chip_select; }
-        auto frequency() const noexcept { return m_frequency; }
-    };
-    class info_spi_dev final : public info_spi_dev_base
+public:
+    info_spi_dev_base() = default;
+    info_spi_dev_base(const std::string_view& name, const std::string_view& label, uint32_t chip_select, double frequency, info_uid parent_uid)
+        : info_base { name, label, parent_uid }
+        , m_chip_select { chip_select }
+        , m_frequency { frequency }
     {
-    public:
-        using list_type = info_list<info_spi_dev>;
-        info_spi_dev() = default;
-        info_spi_dev(const std::string_view &name, const std::string_view &label, uint32_t chip_select, double frequency, info_uid parent_uid)
-            : info_spi_dev_base{name, label, chip_select, frequency, parent_uid} {}
-    };
+    }
+    auto chip_select() const noexcept { return m_chip_select; }
+    auto frequency() const noexcept { return m_frequency; }
+};
+class info_spi_dev final : public info_spi_dev_base {
+public:
+    using list_type = info_list<info_spi_dev>;
+    info_spi_dev() = default;
+    info_spi_dev(const std::string_view& name, const std::string_view& label, uint32_t chip_select, double frequency, info_uid parent_uid)
+        : info_spi_dev_base { name, label, chip_select, frequency, parent_uid }
+    {
+    }
+};
 
 }

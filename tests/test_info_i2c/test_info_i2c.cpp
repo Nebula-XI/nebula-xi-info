@@ -42,57 +42,53 @@ using namespace nebulaxi;
 
 CTEST_DATA(nebula_xi_info)
 {
-  info_i2c_parser *i2c_parser{};
+    info_i2c_parser* i2c_parser {};
 };
 
 CTEST_SETUP(nebula_xi_info)
 {
-  std::ifstream units_config_file(CONFIG_FILE_PATH);
-  std::stringstream units_config{};
-  units_config << units_config_file.rdbuf();
-  data->i2c_parser = new info_i2c_parser{units_config.str()};
+    std::ifstream units_config_file(CONFIG_FILE_PATH);
+    std::stringstream units_config {};
+    units_config << units_config_file.rdbuf();
+    data->i2c_parser = new info_i2c_parser { units_config.str() };
 };
 
 CTEST_TEARDOWN(nebula_xi_info)
 {
-  if (data->i2c_parser)
-  {
-    delete data->i2c_parser;
-    data->i2c_parser = nullptr;
-  }
+    if (data->i2c_parser) {
+        delete data->i2c_parser;
+        data->i2c_parser = nullptr;
+    }
 }
 
 CTEST2(nebula_xi_info, i2c_axi)
 {
-  auto i2c_parser = *static_cast<info_i2c_parser *>(data->i2c_parser);
-  for (const auto &info : i2c_parser.get_info<info_i2c_parser::axi_parser>())
-  {
-    print_info(info);
-    // TODO: add test
-  }
+    auto i2c_parser = *static_cast<info_i2c_parser*>(data->i2c_parser);
+    for (const auto& info : i2c_parser.get_info<info_i2c_parser::axi_parser>()) {
+        print_info(info);
+        // TODO: add test
+    }
 }
 
 CTEST2(nebula_xi_info, i2c_mux)
 {
-  auto i2c_parser = *static_cast<info_i2c_parser *>(data->i2c_parser);
-  for (const auto &info : i2c_parser.get_info<info_i2c_parser::mux_parser>())
-  {
-    print_info(info);
-    // TODO: add test
-  }
+    auto i2c_parser = *static_cast<info_i2c_parser*>(data->i2c_parser);
+    for (const auto& info : i2c_parser.get_info<info_i2c_parser::mux_parser>()) {
+        print_info(info);
+        // TODO: add test
+    }
 }
 
 CTEST2(nebula_xi_info, i2c_dev)
 {
-  auto i2c_parser = *static_cast<info_i2c_parser *>(data->i2c_parser);
-  for (const auto &info : i2c_parser.get_info<info_i2c_parser::dev_parser>())
-  {
-    print_info(info);
-    // TODO: add test
-  }
+    auto i2c_parser = *static_cast<info_i2c_parser*>(data->i2c_parser);
+    for (const auto& info : i2c_parser.get_info<info_i2c_parser::dev_parser>()) {
+        print_info(info);
+        // TODO: add test
+    }
 }
 
-int main(int argc, const char **argv)
+int main(int argc, const char** argv)
 {
-  return ctest_main(argc, argv);
+    return ctest_main(argc, argv);
 }
