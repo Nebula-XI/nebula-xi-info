@@ -2,8 +2,8 @@
 
 Units Tree Configuration (UTC) and Units Information Structures (UIS) for AXI Library
 
-.. image:: https://img.shields.io/badge/License-MIT-blue.svg
-    :target: https://opensource.org/licenses/mit-license.php]
+.. image:: https://img.shields.io/badge/License-LGPL%20v3-blue.svg
+  :target: https://www.gnu.org/licenses/lgpl-3.0]
 
 [![CMake](https://github.com/Nebula-XI/nebula-xi-info/actions/workflows/cmake.yml/badge.svg)](https://github.com/Nebula-XI/nebula-xi-info/actions/workflows/cmake.yml)
 
