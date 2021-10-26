@@ -4,11 +4,11 @@ Units Tree Configuration (UTC) and Units Information Structures (UIS) for AXI Li
 
 [![CMake](https://github.com/Nebula-XI/nebula-xi-info/actions/workflows/cmake.yml/badge.svg)](https://github.com/Nebula-XI/nebula-xi-info/actions/workflows/cmake.yml)
 
-## Required
+## Requirements
 
 CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3 (Linux Native Build) or MinGW Cross-Compiler 10.3 (Build for Windows on Linux)
 
-## Configure
+## Configuring
 
 ### Linux Native x86_64
 
@@ -72,10 +72,116 @@ CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3 (Linux Native Build) or MinGW Cro
 
 `./make sh config build test`
 
+## JSON Configuration File
 
-## Parsing example
+```json
 
-### Parsing I2C configuration
+{
+    "id": "Nebula-XI",
+    "name": "FMC126P",
+    "version": "3.1",
+    "units": [
+        {
+            "name": "RX DMA Switch",
+            "driver": "AXI4-Stream Switch",
+            "offset": "0x00010000"
+        },
+        {
+            "name": "ATG",
+            "driver": "AXI Traffic Generator",
+            "offset": "0x00030000"
+        },
+        {
+            "name": "I2C",
+            "driver": "AXI IIC",
+            "offset": "0x00020000",
+            "units": [
+                {
+                    "name": "TCA9548A",
+                    "driver": "TCA9548A",
+                    "label": "D23",
+                    "addr": "0x70",
+                    "freq": "400000",
+                    "channels": "8",
+                    "units": [
+                        {
+                            "name": "FMC",
+                            "channel": "0"
+                        },
+                        {
+                            "name": "POWER",
+                            "channel": "1",
+                            "units": [
+                                {
+                                    "name": "INA219",
+                                    "driver": "INA219",
+                                    "label": "D33",
+                                    "addr": "0x40",
+                                    "freq": "400000",
+                                    "additional": {}
+                                },
+                                {
+                                    "name": "LTC2991",
+                                    "driver": "LTC2991",
+                                    "label": "D31",
+                                    "addr": "0x90",
+                                    "freq": "400000",
+                                    "additional": {}
+                                }
+                            ]
+                        },
+                        {
+                            "name": "EXAR",
+                            "channel": "5",
+                            "units": [
+                                {
+                                    "name": "XR77128",
+                                    "driver": "XR77128",
+                                    "label": "D32",
+                                    "addr": "0x28",
+                                    "freq": "400000"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "DDR4",
+                            "channel": "6",
+                            "units": [
+                                {
+                                    "name": "DDR4 SODIMM",
+                                    "driver": "DDR4 SODIMM",
+                                    "label": "XS1.1",
+                                    "addr": "0x50",
+                                    "freq": "400000"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "SWITCH CLOCK",
+                            "channel": "7",
+                            "units": [
+                                {
+                                    "name": "ADN4600",
+                                    "driver": "ADN4600",
+                                    "label": "D13",
+                                    "addr": "0x48",
+                                    "freq": "400000"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+
+```
+
+## Parsing Example
+
+### Parsing I2C Configuration
 ```c
     std::ifstream units_config_file(NEBULAXI_CONFIG_FILE_PATH);
     std::stringstream units_config {};
@@ -87,7 +193,7 @@ CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3 (Linux Native Build) or MinGW Cro
     ...
 ```
 
-### Result of parsing I2C configuration
+### Result of Parsing I2C Configuration
 ```bash
 Configuration file: ./config/units_tree_config.json
 
