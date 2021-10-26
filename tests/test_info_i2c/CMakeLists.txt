@@ -4,7 +4,7 @@ project(nebula-xi-info-i2c-test)
 
 set(PROJECT_COMPILE_OPTIONS)
 set(PROJECT_COMPILE_DEFINES)
-set(PROJECT_LINK_LIBRARIES nebula-xi-info xdma_hal)
+set(PROJECT_LINK_LIBRARIES nebula-xi-info)
 set(PROJECT_COMPILE_FEATURES cxx_std_17)
 
 add_executable(${PROJECT_NAME} test_info_i2c.cpp)
