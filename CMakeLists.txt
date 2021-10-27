@@ -6,9 +6,7 @@ set(PROJECT_COMPILE_DEFINES)
 set(PROJECT_LINK_LIBRARIES)
 
 set(PROJECT_INCLUDE_DIRS
-    ${PROJECT_SOURCE_DIR}/include/info
-    ${PROJECT_SOURCE_DIR}/include/parser
-    ${PROJECT_SOURCE_DIR}/include/units_tree
+    ${PROJECT_SOURCE_DIR}
 )
 set(PROJECT_INCLUDES )
 

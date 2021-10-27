@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "info_i2c.h"
+#include "nebulaxi/info/info_i2c.h"
 
 void print_info(const nebulaxi::info_base& info)
 {

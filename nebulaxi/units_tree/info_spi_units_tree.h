@@ -26,7 +26,7 @@ SOFTWARE.
 
 #pragma once
 
-#include "info_base.h"
+#include "nebulaxi/info/info_base.h"
 
 namespace nebulaxi {
 

@@ -26,8 +26,8 @@ SOFTWARE.
 
 #pragma once
 
-#include "info_i2c.h"
-#include "info_i2c_units_tree.h"
+#include "nebulaxi/info/info_i2c.h"
+#include "nebulaxi/units_tree/info_i2c_units_tree.h"
 
 namespace nebulaxi {
 class info_axi_i2c_parser : public info_base_parser<info_list, info_axi_i2c> {

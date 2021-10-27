@@ -31,7 +31,7 @@ SOFTWARE.
 #define CTEST_COLOR_OK
 #include <ctest.h>
 
-#include "info_i2c_parser.h"
+#include "nebulaxi/parser/info_i2c_parser.h"
 #include "print_info_i2c.h"
 
 #ifndef NEBULAXI_CONFIG_FILE_PATH

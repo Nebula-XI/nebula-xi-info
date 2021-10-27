@@ -26,8 +26,8 @@ SOFTWARE.
 
 #pragma once
 
-#include "info_gpio.h"
-#include "info_gpio_units_tree.h"
+#include "nebulaxi/info/info_gpio.h"
+#include "nebulaxi/units_tree/info_gpio_units_tree.h"
 
 namespace nebulaxi {
 class info_axi_gpio_parser : public info_base_parser<info_list, info_axi_gpio> {

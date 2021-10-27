@@ -26,28 +26,42 @@ SOFTWARE.
 
 #pragma once
 
-#include "info_sdram.h"
-#include "info_sdram_units_tree.h"
+#include "nebulaxi/info/info_spi.h"
+#include "nebulaxi/units_tree/info_spi_units_tree.h"
 
 namespace nebulaxi {
 
-class info_axi_sdram_parser : public info_base_parser<info_list, info_axi_sdram> {
+class info_axi_spi_parser : public info_base_parser<info_list, info_axi_spi> {
 protected:
     void parser(const info_units_tree& units_tree) override
     {
         // TODO: add configuration parser
     }
-    void parser(const std::string_view& config) override { parser(info_sdram_units_tree { config }.get_units()); }
+    void parser(const std::string_view& config) override { parser(info_spi_units_tree { config }.get_units()); }
 
 public:
-    info_axi_sdram_parser() = default;
-    info_axi_sdram_parser(const std::string_view& config) { parser(config); }
+    info_axi_spi_parser() = default;
+    info_axi_spi_parser(const std::string_view& config) { parser(config); }
 };
 
-class info_sdram_parser final : public info_axi_sdram_parser {
+class info_spi_dev_parser : public info_base_parser<info_list, info_spi_dev> {
+protected:
+    void parser(const info_units_tree& units_tree) override
+    {
+        // TODO: add configuration parser
+    }
+    void parser(const std::string_view& config) override { parser(info_units_tree { config }.get_units()); }
+
 public:
-    using axi_parser = info_axi_sdram_parser;
-    info_sdram_parser(const std::string_view& config) { parser(config); }
+    info_spi_dev_parser() = default;
+    info_spi_dev_parser(const std::string_view& config) { parser(config); }
+};
+
+class info_spi_parser final : public info_axi_spi_parser, public info_spi_dev_parser {
+public:
+    using axi_parser = info_axi_spi_parser;
+    using dev_parser = info_spi_dev_parser;
+    info_spi_parser(const std::string_view& config) { parser(config); }
     template <typename parser>
     typename parser::list_type get_info() const { return parser::get_info(); }
     template <typename parser>
@@ -60,8 +74,9 @@ public:
 private:
     void parser(const std::string_view& config) final
     {
-        auto units_tree = info_sdram_units_tree { config }.get_units();
+        auto units_tree = info_spi_units_tree { config }.get_units();
         axi_parser::parser(units_tree);
+        dev_parser::parser(units_tree);
         // TODO: add configuration parser
     }
 };

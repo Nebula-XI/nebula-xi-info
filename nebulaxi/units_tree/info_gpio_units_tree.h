@@ -26,16 +26,16 @@ SOFTWARE.
 
 #pragma once
 
-#include "info_base.h"
+#include "nebulaxi/info/info_base.h"
 
 namespace nebulaxi {
 
-class info_sdram_units_tree : public info_units_tree {
-    static constexpr auto k_sdram { "sdram" };
+class info_gpio_units_tree : public info_units_tree {
+    static constexpr auto k_gpio { "gpio" };
 
 public:
     using info_units_tree::info_units_tree;
-    constexpr auto unit_name() const { return k_sdram; }
+    constexpr auto unit_name() const { return k_gpio; }
 };
 
 }

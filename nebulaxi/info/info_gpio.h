@@ -26,22 +26,15 @@ SOFTWARE.
 
 #pragma once
 
-#include "info_base.h"
+#include "nebulaxi/info/info_base.h"
 
 namespace nebulaxi {
-class info_axi_sdram final : public info_axi_base {
+class info_axi_gpio final : public info_axi_base {
 public:
-    using list_type = info_list<info_axi_sdram>;
-    info_axi_sdram() = default;
-    info_axi_sdram(const std::string_view& name, const std::string_view& driver, uint64_t axi_offset)
+    using list_type = info_list<info_axi_gpio>;
+    info_axi_gpio() = default;
+    info_axi_gpio(const std::string_view& name, const std::string_view& driver, uint64_t axi_offset)
         : info_axi_base { name, driver, axi_offset }
-    {
-    }
-};
-class info_sdram_dev_base : public info_base {
-    info_sdram_dev_base() = default;
-    info_sdram_dev_base(const std::string_view& name, const std::string_view& driver, info_uid parent_uid)
-        : info_base { name, driver, parent_uid }
     {
     }
 };

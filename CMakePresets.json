@@ -57,7 +57,7 @@
       "inherits": "base-cross-mingw-x64",
       "displayName": "[x64-mingw-cross] Configure Windows on Linux (Release)",
       "cacheVariables": {
-        "CMAKE_SYSTEM_NAME": "Release"
+        "CMAKE_BUILD_TYPE": "Release"
       }
     },
     {
