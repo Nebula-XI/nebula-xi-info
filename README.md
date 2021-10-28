@@ -42,11 +42,6 @@ CMake 3.21, Ninja 1.10.2, Boost 1.75, GCC 10.3
 
 `ctest --preset linux-x64-debug`
 
-## All
-
-### Linux
-
-`./make.sh config build test`
 
 ## JSON Configuration File
 
