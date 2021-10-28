@@ -13,7 +13,6 @@
       "binaryDir": "${sourceDir}/build/${presetName}",
       "cacheVariables": {
         "NEBULAXI_INFO_BUILD_TEST": true,
-        "NEBULAXI_DEV_BUILD_TEST": true,
         "NEBULAXI_INFO_TEST_VERBOSE": true
       }
     },
